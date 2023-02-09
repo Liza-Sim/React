@@ -1,0 +1,20 @@
+.buttonNav {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: uppercase;
+  padding: 10px 40px;
+  border: 1px solid #6e9c9f;
+  background: #2d3681;
+  margin: 10px 0px;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.buttonNav:hover {
+  background-color: #7db3d6;
+  color: #ffffff;
+  border: 1px solid #120060;
+  box-shadow: 0px 0px 20px rgb(36 163 255 / 50%);
+  cursor: pointer;
+}
