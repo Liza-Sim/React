@@ -1,0 +1,97 @@
+.App {
+  font: bold 14px Arial, sans-serif;
+  margin: 10px auto 0;
+  text-align: center;
+  width: 325px;
+  padding: 20px 20px 9px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  background: #acadb3;
+  background: linear-gradient(#abacad, #bfc5c8);
+  border-radius: 3px;
+  box-shadow: 0px 4px #50585c, 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+.App button {
+  cursor: pointer;
+  width: 66px;
+  height: 36px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+  margin: 0 7px 11px 0;
+  color: #000000;
+  line-height: 36px;
+  text-align: center;
+  border: white;
+}
+.App button:hover {
+  background: #bebbf6;
+}
+#input {
+  border-radius: 15px;
+  grid-column-start: 2;
+  grid-column-end: -1;
+  text-align: end;
+  margin: 0 15px 10px 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+  font-size: 17px;
+  line-height: 40px;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+#amount {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+#min {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+#multiplication {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+#division {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
+  grid-row-end: 6;
+}
+#clean {
+  background: #92c9ff;
+  box-shadow: 0px 4px #5653a8;
+  color: white;
+}
+#equals {
+  background: #92c9ff;
+  box-shadow: 0px 4px #5653a8;
+  color: #000000;
+}
+#dot {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
+.App .oper {
+  background: #fdbfc5;
+  box-shadow: 0px 4px #ff7c87;
+  margin-right: 0;
+  font-size: large;
+  color: #50585c;
+}
+.oper:focus {
+  background: #bebbf6;
+}
