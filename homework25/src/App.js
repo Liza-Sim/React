@@ -5,55 +5,100 @@ import Button from "./component/Button"
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: "", mark: '', result:''};
+    this.state = {past: '',count: "", mark: ''};
   }
   showClean = () => {
     this.setState(() => {
-      return { count: '', mark: '', result: '',}
+      return {past: '',count: "", mark: ''}
     })
   }
   showClick = (event) => { 
     this.setState(prevState => {
-      if (prevState.mark === '+') {
-        return {
-          count: event.target.value,
-          result: Number(prevState.count) + Number(event.target.value),
-          mark:''
-        }
-      } else if (prevState.mark === '-') {
-         return {
-          count: event.target.value,
-          result: Number(prevState.count) - Number(event.target.value),
-          mark:''
-        }
-      } else if (prevState.mark === '*') {
-         return {
-          count: event.target.value,
-          result: Number(prevState.count) * Number(event.target.value),
-          mark:''
-        }
-      } else if (prevState.mark === '/') {
-         return {
-          count: event.target.value,
-          result: Number(prevState.count) / Number(event.target.value),
-          mark:''
-        }
-      } else {
-        return {
+      return {
         count: prevState.count + event.target.value,
-        }
       }
     })
   }
-  operatorFunc = (event) => {
+   operatorFunc = (event) => {
     this.setState(prevState => {
-      if (prevState.result !== '') {
+      if (prevState.mark === '') {
         return {
+          past: prevState.count,
+          count: '',
           mark: event.target.value,
-          count: prevState.result,
-      }}
+        }
+      } else {
+        if (prevState.mark === '+') {
+          return {
+            past: Number(prevState.count) + Number(prevState.past),
+            mark:  event.target.value,
+          }
+        } else if (prevState.mark === '-') {
+          return {
+            past: Number(prevState.past) - Number(prevState.count),
+            mark:  event.target.value,
+          }
+        } else if (prevState.mark === '*') {
+          return {
+            past: Number(prevState.past) * Number(prevState.count),
+            mark:  event.target.value,
+          }
+        } else if (prevState.mark === '/') {
+          return {
+            past: Number(prevState.past) / Number(prevState.count),
+            mark:  event.target.value,
+          }
+        } 
+      }
+    })
+   }
+  showResult = () => {
+    this.setState((prevState) => {
+      if (prevState.mark === '+') { 
+        return {
+          count: (Number(prevState.count) + Number(prevState.past)),
+          mark: '',
+          past: '',
+        }
+      } else if (prevState.mark === '-') {
+        return {
+          count: Number(prevState.past) - Number(prevState.count),
+          mark: '',
+          past: '',
+        }
+      } else if (prevState.mark === '*') {
+        return {
+          count: Number(prevState.past) * Number(prevState.count),
+          mark: '',
+          past: '',
+        }
+      } else if (prevState.mark === '/') {
+        return {
+          count: Number(prevState.past) / Number(prevState.count),
+          mark: '',
+          past: '',
+        }
+      } else {
+        return {
+          count:Number(prevState.count),
+        }
+      }
+      
+    })
+  }
+  showSqrt = () => {
+    this.setState((prevState) => {
       return {
-        mark: event.target.value,
+        count: Math.sqrt(prevState.count),
+        mark: '',
+      }
+    })
+  }
+  showPow = () => {
+    this.setState((prevState) => {
+      return {
+        count: Math.pow(prevState.count, 2),
+        mark: '',
       }
     })
   }
@@ -61,7 +106,7 @@ class App extends Component {
     this.setState((prevState) => {
       if (prevState.count > 0) {
         return {
-        count: -prevState.count,
+        count: prevState.count*(-1),
         } 
       } else {
         return {
@@ -70,39 +115,28 @@ class App extends Component {
       }
     }) 
   }
-  showPow = () => {
+  showParcent = () => {
     this.setState((prevState) => {
-      return {
-        count: Math.pow(prevState.count, 2),
-        mark: '',
-        result: '',
-      }
-    })
-  }
-  showCube = () => {
-    this.setState((prevState) => {
-      return {
-        count: Math.pow(prevState.count, 3),
-        mark: '',
-        result: '',
-      }
-    })
-  }
-  showSqrt = () => {
-    this.setState((prevState) => {
-      return {
-        count: Math.sqrt(prevState.count),
-        mark: '',
-        result: '',
-      }
-    })
-  }
-  showResult = () => {
-    this.setState((prevState) => {
-      return {
-        count: prevState.result,
-        mark: '',
-        result: '',
+      if (prevState.mark === '+') {
+        return {
+          count: Number(prevState.past) + Number(prevState.past) / 100 * Number(prevState.count),
+          mark: '',
+        }
+      } else if (prevState.mark === '-') {
+        return {
+          count: Number(prevState.past)-Number(prevState.past)/100*Number(prevState.count),
+          mark: '',
+        }
+      } else if (prevState.mark === '/') {
+        return {
+          count: Number(prevState.past) / Number(prevState.past)/100*Number(prevState.count),
+          mark: '',
+        }
+      } else if (prevState.mark === '*') {
+        return {
+          count: Number(prevState.past)*Number(prevState.past)/100*Number(prevState.count),
+          mark: '',
+        }
       }
     })
   }
@@ -112,7 +146,7 @@ class App extends Component {
         <Button value="Cl" id="clean" className="oper" callback={this.showClean} />
         <input id="input" type="text" className="oper" defaultValue={this.state.count} />
         <Button value="x²" id="pow" className="oper" callback={this.showPow} />
-        <Button value="x³" id="cube" className="oper" callback={this.showCube} />
+        <Button value="%" id="percent" className="oper" callback={this.showParcent} />
         <Button value="√x" id="sgrt" className="oper" callback={this.showSqrt} />
         <Button value="7" id="button7"  callback={this.showClick} />
         <Button value="8" id="button8" callback={this.showClick} />
