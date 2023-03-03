@@ -1,0 +1,8 @@
+.contact {
+  display: flex;
+  margin: 0 auto;
+  width: 800px;
+  justify-content: space-around;
+  font-size: medium;
+  border-bottom: 3px solid rgb(20, 19, 56);
+}
