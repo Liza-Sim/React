@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(196, 122, 219, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+  padding: 20px 35px;
+}
+
+.content {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background: #291c3e;
+  position: relative;
+  color: white;
+}
+.close-button {
+  font-size: xx-large;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+.title {
+  margin: 0 0 15px;
+}
+.button_box {
+  display: flex;
+  justify-content: space-evenly;
+}
